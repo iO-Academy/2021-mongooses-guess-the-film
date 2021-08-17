@@ -4,13 +4,16 @@
     padding: 0;
 }
 
-main, section {
+main {
     display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
+    flex-flow: row nowrap;
+    justify-content: center;
 }
 
 section {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
     margin: 30px;
     padding: 30px;
     width: 80%;
