@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="normalize.css">
     <link rel="stylesheet" type="text/css" href="guess_the_film.css">
     <script defer type="text/javascript" src="guess_the_film.js"></script>
     <title>Guess the Film</title>
@@ -9,8 +10,21 @@
 <body>
 <section id="start_screen">
     <h1>Guess the Film</h1>
-    <p>Instructions</p>
-    <button id="start_button"></button>
+    <div class="instruction_wrapper">
+        <h2>Aim:</h2>
+        <p>Guess as many film titles from the quotes provided within 30s. Each correct answer is worth 1 point.</p>
+    </div>
+    <div class="instruction_wrapper">
+        <h2>How to play:</h2>
+        <ul>
+            <li>Press 'Start Game' to begin</li>
+            <li>Read the quote displayed, enter your guess and click 'Submit'</li>
+            <li>Pressing 'Hint' reveals 3 possible answers and the year the film was released</li>
+            <li>Click 'Next' to move to the next questions</li>
+            <li>Once a game is finished, click 'Start Again' to start a new game</li>
+        </ul>
+    </div>
+    <button id="start_button">Start Game</button>
 </section>
 </body>
 </html>
