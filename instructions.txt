@@ -2,7 +2,7 @@ Instructions
 
 Aim: 
 
-Guess as many film titles from the quotes provided within 30 seconds. Each correct guess scores 1 point
+Guess as many film titles from the quotes provided within 30 seconds. Each correct guess scores 1 point.
 
 How to Play: 
 
@@ -12,5 +12,5 @@ How to Play:
 - Pressing hint reveals 3 possibilities and the year the film was released
 - Pressing reveal shows the answer - you won't score any points for this film
 - To move to the next question, click 'Next'
-- Once time expires, your score will display.
-- Click Start again for a new game.
+- Once time expires, your score will display
+- Click Start again for a new game
