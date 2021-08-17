@@ -31,3 +31,7 @@ h1 {
 ul {
     padding-left: 20px;
 }
+
+.correct_response, .incorrect_response {
+    display: none;
+}
