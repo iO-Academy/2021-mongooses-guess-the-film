@@ -5,37 +5,41 @@
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/guess_the_film.css">
     <script defer src="index.js"></script>
+    <link href="http://fonts.cdnfonts.com/css/mexcellent" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/hba3yfx.css">
     <title>Guess the Film</title>
+
 </head>
 <body>
-<main>
-    <section id="start_screen">
-        <h1>Guess the Film</h1>
-        <div class="instruction_wrapper">
-            <h2>Aim:</h2>
-            <p>Guess as many film titles from the quotes provided within 30s. Each correct answer is worth 1 point.</p>
-        </div>
-        <div class="instruction_wrapper">
-            <h2>How to play:</h2>
-            <ul>
-                <li>Press 'Start Game' to begin</li>
-                <li>Read the quote displayed, enter your guess and click 'Submit'</li>
-                <li>Pressing 'Hint' reveals 3 possible answers and the year the film was released</li>
-                <li>Click 'Next' to move to the next questions</li>
-                <li>Once a game is finished, click 'Start Again' to start a new game</li>
-            </ul>
-        </div>
-        <div>
-            <button type="button" id="start_button">Start</button>
-        </div>
-    </section>
+    <main>
+        <section id="start_screen" class="start_screen">
+                <h1>Guess the Film</h1>
+            <div class="instruction_wrapper">
+                <h2>Aim</h2>
+                <p>Guess as many film titles from the quotes provided within 30s.</p>
+                <p>Each correct answer is worth 1 point.</p>
+            </div>
+            <div class="instruction_wrapper">
+                <h2>How to play</h2>
+                <ul>
+                    <li>Press 'Start Game' to begin</li>
+                    <li>Read the quote displayed, enter your guess and click 'Submit'</li>
+                    <li>Pressing 'Hint' reveals 3 possible answers and the year the film was released</li>
+                    <li>Click 'Next' to move to the next questions</li>
+                    <li>Once a game is finished, click 'Start Again' to start a new game</li>
+                </ul>
+            </div>
+            <div>
+                <button type="button" id="start_button" class="start_button">Start game</button>
+            </div>
+        </section>
 
-    <section id="game_screen">
+    <section id="game_screen" class="game_screen">
         <header id="score_time">
             <div id="score"></div>
             <div id="time"></div>
         </header>
-        <h2 id="quote"></h2>
+        <h2 id="quote" class="quote"></h2>
         <div class="game_controls">
             <div class="input_wrapper">
                 <label for="guess"></label>
@@ -43,25 +47,25 @@
                 <button id="submit_button">Submit</button>
                 <button id="reveal_button">Reveal Answer</button>
             </div>
-        </div>
-        <div id="user_feedback">
-            <div id="hint"></div>
-            <div id="answer"></div>
-            <div id="correct_incorrect">
-                <div id="correct_response">You were correct!</div>
-                <div id="incorrect_response">I'm sorry you fluffed it!</div>
+            <div id="user_feedback">
+                <div id="hint"></div>
+                <div id="answer"></div>
+                <div id="correct_incorrect">
+                    <div id="correct_response" class="correct_response">Well done! That was correct!</div>
+                    <div id="incorrect_response" class="incorrect_response">Oh no! Wrong answer! Try again?</div>
+                </div>
             </div>
-        </div>
-        <footer id="next_question">
-            <button id="next_question_button">Next</button>
-        </footer>
-    </section>
+            <footer id="next_question" class="next_question">
+                <button id="next_question_button">Next</button>
+            </footer>
+        </section>
 
-    <section id="end_screen">
-        <h2 id="end_message"></h2>
-        <h3 id="end_score"></h3>
-        <button id="restart_button">Restart Game</button>
-    </section>
-</main>
+        <section id="end_screen">
+            <h2 id="end_message"></h2>
+            <h3 id="end_score"></h3>
+            <button id="restart_button">Restart Game</button>
+        </section>
+    </main>
 </body>
 </html>
+

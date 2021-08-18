@@ -1,3 +1,6 @@
+document.getElementById('end_screen').style.display = 'none'
+document.getElementById('game_screen').style.display = 'none'
+
 function shuffle_array(array) {
     for (let index = array.length - 1; index > 0; index--) {
         let random_index = Math.floor(Math.random() * (index + 1))
@@ -32,6 +35,7 @@ document.getElementById('submit_button').addEventListener('click', function () {
     let correct_response = document.getElementById('correct_response')
     let incorrect_response = document.getElementById('incorrect_response')
     if(player_guess.toLowerCase() === answer.toLowerCase()) {
+        document.getElementById('reveal_button').disabled = true
         correct_response.style.display = 'block'
         incorrect_response.style.display = 'none'
         guess.value = ''
@@ -44,6 +48,14 @@ document.getElementById('submit_button').addEventListener('click', function () {
     correct_incorrect_elem.style.display = 'block'
     let user_feedback_elem = document.getElementById('user_feedback')
     user_feedback_elem.style.display = 'block'
+})
+
+document.getElementById('next_question_button').addEventListener('click', function () {
+    document.getElementById('reveal_button').disabled = false
+    document.getElementById('submit_button').disabled = false
+    get_new_question()
+    document.getElementById('next_question_button').disabled = true
+    document.getElementById('submit_button').disabled = false
 })
 
 document.getElementById('start_button').addEventListener('click', (e) => {
