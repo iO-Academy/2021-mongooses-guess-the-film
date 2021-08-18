@@ -86,6 +86,6 @@ document.getElementById('reveal_button').addEventListener('click', (e) => {
 
 document.getElementById('hint_button').addEventListener('click', (e) => {
     let hint_array = get_hint()
-    document.getElementById('hint').innerHTML = '<p>This Movie was released in: ' + hint_array[0] + '</p> <ul><li>' + hint_array[1] + '</li><li>' + hint_array[2] + '</li><li>' + hint_array[3] + '</li></ul>'
+    document.getElementById('hint').innerHTML = '<p>This Movie was released in: ' + hint_array[3] + '</p> <ul><li>' + hint_array[0] + '</li><li>' + hint_array[1] + '</li><li>' + hint_array[2] + '</li></ul>'
     document.getElementById('hint').style.display = 'block'
 })
