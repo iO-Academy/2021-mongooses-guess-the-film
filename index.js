@@ -1,10 +1,14 @@
-s3-t2-submit-button
+document.querySelector('#game_screen').hidden = true
+document.querySelector('#end_screen').hidden = true
+
+
 let submit_button = document.getElementById('submit_button')
 let guess = document.getElementById('guess')
 let answer_element = document.getElementById('answer')
 let answer = answer_element.textContent
 let incorrect_response = document.getElementById('incorrect_response')
 let correct_response = document.getElementById('correct_response')
+let correct_element = document.querySelector('#correct_incorrect');
 
 answer_element.hidden = true;
 incorrect_response.hidden = true;
@@ -12,12 +16,15 @@ correct_response.hidden = true;
 
 submit_button.addEventListener("click", function () {
     incorrect_response.hidden = true;
+    correct_element.hidden = false;
     correct_response.hidden = true;
     let player_guess = guess.value
     if(player_guess.toLowerCase() === answer.toLowerCase()) {
         correct_response.hidden = false
+        console.log('correct')
     } else {
         incorrect_response.hidden = false;
+        console.log('incorrect')
     }
     guess.value = ''
 })
@@ -42,25 +49,24 @@ function get_new_question() {
         let quote_element = document.querySelector('#quote');
         quote_element.textContent = current_movie.quote;
 
-        let answer_element = document.querySelector('#answer_output');
+        let answer_element = document.querySelector('#answer');
         answer_element.hidden = true;
         answer_element.innerHTML = '<h2>' + current_movie.title + '</h2>';
 
-        let correct_element = document.querySelector('#correct');
+        let correct_element = document.querySelector('#correct_incorrect');
         correct_element.innerHTML = '';
         correct_element.hidden = true;
     }
 }
 
-let remaining_films = {}
+let remaining_movies = {}
 document.querySelector('#start_button').addEventListener('click', (e) => {
     document.querySelector('#start_screen').hidden = true
     document.querySelector('#game_screen').hidden = false
     fetch("src/films.json")
         .then(data => data.json())
         .then((data) => {
-            remaining_films = shuffle_array(data.films)
+            remaining_movies = shuffle_array(data.films)
             get_new_question()
         })
 })
-s3-guess-random-quote
