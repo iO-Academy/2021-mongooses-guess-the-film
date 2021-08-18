@@ -20,10 +20,13 @@ function get_new_question() {
         let quote_element = document.getElementById('quote')
         quote_element.textContent = current_movie.quote
         let answer_element = document.getElementById('answer')
+        answer_element.dataset.year = current_movie.year
+        answer_element.dataset.title = current_movie.title
         answer_element.style.display = 'none'
         answer_element.innerHTML = '<h2>' + current_movie.title + '</h2>'
         let correct_incorrect_elem = document.getElementById('correct_incorrect')
         correct_incorrect_elem.style.display = 'none'
+        get_hint()
     }
 }
 
@@ -83,3 +86,23 @@ document.getElementById('reveal_button').addEventListener('click', (e) => {
     submit_button.disabled = true;
     submit_button.style.cursor = 'default'
 })
+
+
+function get_hint ()
+{
+    fetch('src/films.json')
+        .then(data => data.json())
+        .then((data) => {
+            let answer_year = document.getElementById('answer').dataset.year
+            let answer_title = document.getElementById('answer').dataset.title
+            let movie_titles = (data.films).map(movie => movie.title).filter(movie => movie.title !== answer_title)
+            let hint = shuffle_array(movie_titles).slice(0, 2)
+            hint.push(answer_title)
+            shuffle_array(hint)
+
+            hint.push(answer_year)
+            console.log(hint)
+
+        })
+}
+
