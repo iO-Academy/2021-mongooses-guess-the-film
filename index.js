@@ -55,6 +55,7 @@ document.getElementById('next_question_button').addEventListener('click', functi
     document.getElementById('submit_button').disabled = false
     get_new_question()
     document.getElementById('next_question_button').disabled = true
+    document.getElementById('submit_button').disabled = false
 })
 
 document.getElementById('start_button').addEventListener('click', (e) => {
