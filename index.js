@@ -1,3 +1,6 @@
+document.getElementById('end_screen').style.display = 'none'
+document.getElementById('game_screen').style.display = 'none'
+
 function shuffle_array(array) {
     for (let index = array.length - 1; index > 0; index--) {
         let random_index = Math.floor(Math.random() * (index + 1))
@@ -32,6 +35,9 @@ document.getElementById('submit_button').addEventListener('click', function () {
     let correct_response = document.getElementById('correct_response')
     let incorrect_response = document.getElementById('incorrect_response')
     if(player_guess.toLowerCase() === answer.toLowerCase()) {
+        let reveal_button = document.getElementById('reveal_button')
+        reveal_button.disabled = true
+        reveal_button.style.cursor = 'default'
         correct_response.style.display = 'block'
         incorrect_response.style.display = 'none'
         guess.value = ''
@@ -46,6 +52,18 @@ document.getElementById('submit_button').addEventListener('click', function () {
     user_feedback_elem.style.display = 'block'
 })
 
+document.getElementById('next_question_button').addEventListener('click', function () {
+    let reveal_button = document.getElementById('reveal_button')
+    reveal_button.disabled = false
+    reveal_button.style.cursor = 'pointer'
+    let submit_button = document.getElementById('submit_button')
+    submit_button.style.cursor = 'pointer'
+    submit_button.disabled = false
+    document.getElementById('next_question_button').disabled = true
+    document.getElementById('guess').value = ''
+    get_new_question()
+})
+
 document.getElementById('start_button').addEventListener('click', (e) => {
     document.getElementById('start_screen').style.display = 'none'
     document.getElementById('game_screen').style.display = 'block'
@@ -58,3 +76,10 @@ document.getElementById('start_button').addEventListener('click', (e) => {
         })
 })
 
+document.getElementById('reveal_button').addEventListener('click', (e) => {
+    document.getElementById('answer').style.display ='block'
+    document.getElementById('next_question_button').disabled = false
+    let submit_button = document.getElementById('submit_button')
+    submit_button.disabled = true;
+    submit_button.style.cursor = 'default'
+})
