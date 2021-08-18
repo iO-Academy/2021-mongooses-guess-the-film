@@ -52,10 +52,12 @@ document.getElementById('submit_button').addEventListener('click', function () {
 
 document.getElementById('next_question_button').addEventListener('click', function () {
     document.getElementById('reveal_button').disabled = false
-    document.getElementById('submit_button').disabled = false
-    get_new_question()
+    let submit_button = document.getElementById('submit_button')
+    submit_button.style.cursor = 'pointer'
+    submit_button.disabled = false
     document.getElementById('next_question_button').disabled = true
-    document.getElementById('submit_button').disabled = false
+    document.getElementById('guess').value = ''
+    get_new_question()
 })
 
 document.getElementById('start_button').addEventListener('click', (e) => {
@@ -73,5 +75,8 @@ document.getElementById('start_button').addEventListener('click', (e) => {
 document.getElementById('reveal_button').addEventListener('click', (e) => {
     document.getElementById('answer').style.display ='block'
     document.getElementById('next_question_button').disabled = false
-    document.getElementById('submit_button').disabled = true
+    let submit_button = document.getElementById('submit_button')
+    submit_button.disabled = true;
+    submit_button.style.cursor = 'default'
+    
 })
