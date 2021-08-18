@@ -17,7 +17,7 @@
     },
     {
       "title": "Jerry Maguire",
-      "quote": "You had me at "hello."",
+      "quote": "You had me at 'hello'.",
       "year": "1996"
     },
     {
@@ -37,7 +37,7 @@
     },
     {
       "title": "Scarface",
-      "quote": "Say "hello" to my little friend!",
+      "quote": "Say 'hello' to my little friend!",
       "year": "1983"
     },
     {
@@ -99,7 +99,7 @@
       "title": "Shrek",
       "quote": "Ogres are like onions.",
       "year": "2001"
-    },
+    }
    
-  ],
+  ]
 }
