@@ -35,7 +35,9 @@ document.getElementById('submit_button').addEventListener('click', function () {
     let correct_response = document.getElementById('correct_response')
     let incorrect_response = document.getElementById('incorrect_response')
     if(player_guess.toLowerCase() === answer.toLowerCase()) {
-        document.getElementById('reveal_button').disabled = true
+        let reveal_button = document.getElementById('reveal_button')
+        reveal_button.disabled = true
+        reveal_button.style.cursor = 'default'
         correct_response.style.display = 'block'
         incorrect_response.style.display = 'none'
         guess.value = ''
@@ -51,7 +53,9 @@ document.getElementById('submit_button').addEventListener('click', function () {
 })
 
 document.getElementById('next_question_button').addEventListener('click', function () {
-    document.getElementById('reveal_button').disabled = false
+    let reveal_button = document.getElementById('reveal_button')
+    reveal_button.disabled = false
+    reveal_button.style.cursor = 'pointer'
     let submit_button = document.getElementById('submit_button')
     submit_button.style.cursor = 'pointer'
     submit_button.disabled = false
@@ -78,5 +82,4 @@ document.getElementById('reveal_button').addEventListener('click', (e) => {
     let submit_button = document.getElementById('submit_button')
     submit_button.disabled = true;
     submit_button.style.cursor = 'default'
-    
 })
