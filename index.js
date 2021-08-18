@@ -1,35 +1,3 @@
-document.querySelector('#game_screen').hidden = true
-document.querySelector('#end_screen').hidden = true
-
-
-let submit_button = document.getElementById('submit_button')
-let guess = document.getElementById('guess')
-let answer_element = document.getElementById('answer')
-let answer = answer_element.textContent
-let incorrect_response = document.getElementById('incorrect_response')
-let correct_response = document.getElementById('correct_response')
-let correct_element = document.querySelector('#correct_incorrect');
-
-answer_element.hidden = true;
-incorrect_response.hidden = true;
-correct_response.hidden = true;
-
-submit_button.addEventListener("click", function () {
-    incorrect_response.hidden = true;
-    correct_element.hidden = false;
-    correct_response.hidden = true;
-    let player_guess = guess.value
-    if(player_guess.toLowerCase() === answer.toLowerCase()) {
-        correct_response.hidden = false
-        console.log('correct')
-    } else {
-        incorrect_response.hidden = false;
-        console.log('incorrect')
-    }
-    guess.value = ''
-})
-
-
 function shuffle_array(array) {
     for (let index = array.length - 1; index > 0; index--) {
         let random_index = Math.floor(Math.random() * (index + 1));
@@ -50,19 +18,44 @@ function get_new_question() {
         quote_element.textContent = current_movie.quote;
 
         let answer_element = document.querySelector('#answer');
-        answer_element.hidden = true;
+        answer_element.style.display="none";
         answer_element.innerHTML = '<h2>' + current_movie.title + '</h2>';
 
-        let correct_element = document.querySelector('#correct_incorrect');
-        correct_element.innerHTML = '';
-        correct_element.hidden = true;
+        let correct_incorrect_elem = document.querySelector('#correct_incorrect');
+        correct_incorrect_elem.style.display="none";
     }
 }
 
 let remaining_movies = {}
+document.getElementById('submit_button').addEventListener("click", function () {
+    let guess = document.getElementById('guess')
+    let player_guess = guess.value
+    console.log(player_guess)
+    let answer = document.getElementById('answer').textContent
+    console.log(answer)
+    let correct_response = document.getElementById('correct_response')
+    let incorrect_response = document.getElementById('incorrect_response')
+    if(player_guess.toLowerCase() === answer.toLowerCase()) {
+        correct_response.style.display="block";
+        incorrect_response.style.display="none";
+        guess.value = ''
+        document.getElementById('next_question_button').disabled = false
+        console.log('correct')
+    } else {
+        correct_response.style.display="none";
+        incorrect_response.style.display="block";
+        console.log('incorrect')
+    }
+    let correct_incorrect_elem = document.querySelector('#correct_incorrect');
+    correct_incorrect_elem.style.display="block";
+    let user_feedback_elem = document.querySelector('#user_feedback');
+    user_feedback_elem.style.display="block";
+})
+
 document.querySelector('#start_button').addEventListener('click', (e) => {
-    document.querySelector('#start_screen').hidden = true
-    document.querySelector('#game_screen').hidden = false
+    document.querySelector('#start_screen').style.display="none";
+    document.querySelector('#game_screen').style.display="block";
+    document.getElementById('next_question_button').disabled = true
     fetch("src/films.json")
         .then(data => data.json())
         .then((data) => {
@@ -70,3 +63,4 @@ document.querySelector('#start_button').addEventListener('click', (e) => {
             get_new_question()
         })
 })
+
