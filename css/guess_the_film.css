@@ -10,10 +10,6 @@ html {
     background-color: #000;
 }
 
-.hidden {
-    display: none;
-}
-
 /* --------- start screen -------------- */
 
 main {
@@ -81,6 +77,10 @@ button:hover {
     cursor: pointer;
 }
 
+button:disabled {
+    cursor: default;
+}
+
 .start_button {
     margin-top: 40px;
 }
@@ -90,6 +90,7 @@ button:hover {
 
 .game_screen {
     text-align: center;
+    display: none;
 }
 
 input {
@@ -113,4 +114,10 @@ input {
     padding-top: 30px;
 }
 
+/* --------- End screen -------------- */
 
+
+.end_screen {
+    text-align: center;
+    display: none;
+}
