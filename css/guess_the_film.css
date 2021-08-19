@@ -79,6 +79,7 @@ button:hover {
 
 button:disabled {
     cursor: default;
+    background-color: #808080;
 }
 
 .start_button {
