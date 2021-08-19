@@ -98,6 +98,7 @@ document.getElementById('start_button').addEventListener('click', (e) => {
 document.getElementById('reveal_button').addEventListener('click', (e) => {
     document.getElementById('answer').style.display ='block'
     document.getElementById('next_question_button').disabled = false
+    document.getElementById('hint_button').disabled = true
     let submit_button = document.getElementById('submit_button')
     submit_button.disabled = true
     submit_button.style.cursor = 'default'
