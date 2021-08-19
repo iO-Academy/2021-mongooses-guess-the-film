@@ -77,6 +77,10 @@ button:hover {
     cursor: pointer;
 }
 
+button:disabled {
+    cursor: default;
+}
+
 .start_button {
     margin-top: 40px;
 }

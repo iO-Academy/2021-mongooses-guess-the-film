@@ -51,11 +51,13 @@ document.getElementById('submit_button').addEventListener('click', function () {
     let answer = document.getElementById('answer').textContent
     let correct_response = document.getElementById('correct_response')
     let incorrect_response = document.getElementById('incorrect_response')
+    let hint_button = document.getElementById('hint_button')
     if(player_guess.toLowerCase() === answer.toLowerCase()) {
         let reveal_button = document.getElementById('reveal_button')
         reveal_button.disabled = true
-        reveal_button.style.cursor = 'default'
         correct_response.style.display = 'block'
+        submit_button.disabled = true
+        hint_button.disabled = true
         incorrect_response.style.display = 'none'
         guess.value = ''
         document.getElementById('next_question_button').disabled = false
@@ -74,9 +76,7 @@ document.getElementById('next_question_button').addEventListener('click', functi
     document.getElementById('hint').style.display = 'none'
     let reveal_button = document.getElementById('reveal_button')
     reveal_button.disabled = false
-    reveal_button.style.cursor = 'pointer'
     let submit_button = document.getElementById('submit_button')
-    submit_button.style.cursor = 'pointer'
     submit_button.disabled = false
     document.getElementById('next_question_button').disabled = true
     document.getElementById('guess').value = ''
@@ -99,9 +99,9 @@ document.getElementById('reveal_button').addEventListener('click', (e) => {
     document.getElementById('answer').style.display ='block'
     document.getElementById('next_question_button').disabled = false
     document.getElementById('hint_button').disabled = true
+    document.getElementById('reveal_button').disabled = true
     let submit_button = document.getElementById('submit_button')
     submit_button.disabled = true
-    submit_button.style.cursor = 'default'
 })
 
 document.getElementById('hint_button').addEventListener('click', (e) => {
