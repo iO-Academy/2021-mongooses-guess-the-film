@@ -97,7 +97,7 @@ document.getElementById('start_button').addEventListener('click', (e) => {
     timeElem.textContent = '30' + ' seconds'
     let countDown = setInterval(function() {
         timeLength--
-        timeLength !== 1 ? timeElem.textContent = timeLength + 'seconds' : timeElem.textContent = timeLength + 'second'
+        timeLength !== 1 ? timeElem.textContent = timeLength + ' seconds' : timeElem.textContent = timeLength + ' second'
         if (timeLength === 0) {
             clearInterval(countDown)
         }
