@@ -66,7 +66,7 @@ document.getElementById('submit_button').addEventListener('click', function () {
         incorrect_response.style.display = 'none'
         guess.value = ''
         document.getElementById('next_question_button').disabled = false
-        document.getElementById('score').textContent = 'Score: ' + score
+        document.getElementById('score').textContent = 'Score  ' + score
     } else {
         correct_response.style.display = 'none'
         incorrect_response.style.display = 'block'
@@ -95,7 +95,7 @@ document.getElementById('start_button').addEventListener('click', (e) => {
     document.getElementById('start_screen').style.display = 'none'
     document.getElementById('game_screen').style.display = 'block'
     document.getElementById('next_question_button').disabled = true
-    document.getElementById('score').textContent = 'Score: 0'
+    document.getElementById('score').textContent = 'Score  0'
     fetch('src/films.json')
         .then(data => data.json())
         .then((data) => {
@@ -104,10 +104,10 @@ document.getElementById('start_button').addEventListener('click', (e) => {
         })
     let timeElem = document.getElementById('time')
     let timeLength = 30
-    timeElem.textContent = 'Time: ' + timeLength
+    timeElem.textContent = 'Time  ' + timeLength
     let countDown = setInterval(function() {
         timeLength--
-        timeElem.textContent = 'Time: ' + timeLength
+        timeElem.textContent = 'Time  ' + timeLength
         if (timeLength === 0) {
             clearInterval(countDown)
             document.getElementById('game_screen').style.display = 'none'
@@ -119,6 +119,9 @@ document.getElementById('start_button').addEventListener('click', (e) => {
         }
         if (hard_mode && timeLength % 5 === 0 && timeLength !== 0 && timeLength !== 30) {
             get_new_question()
+        }
+        if (timeLength <= 5) {
+           timeElem.style.color = '#f40321'
         }
     }, 1000)
 })

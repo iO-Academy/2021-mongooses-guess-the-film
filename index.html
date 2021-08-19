@@ -12,7 +12,7 @@
 <body>
 <main>
     <section id="start_screen" class="start_screen">
-        <h1>Guess the Film</h1>
+        <h1 class="neon">Guess the Film</h1>
         <div class="instruction_wrapper">
             <h2>Aim</h2>
             <p>Guess as many film titles from the quotes provided within 30s.</p>
@@ -29,12 +29,15 @@
             </ul>
         </div>
         <div>
-            <div class="input_wrapper">
-                <label for="hard_mode">Hard Mode</label>
-                <input type="checkbox" id="hard_mode" class="hard_mode">
+            <button type="button" id="start_button" class="start_button">Start Game</button>
+            <div class="input_wrapper mode_select">
+                <p>Normal</p>
+                <label for="hard_mode" class="switch">
+                    <input type="checkbox" id="hard_mode">
+                    <span class="slider round"></span>
+                </label>
+                <p class="hard">Hard</p>
             </div>
-            <button type="button" id="start_button" class="start_button">Normal game</button>
-
         </div>
     </section>
     <section id="game_screen" class="game_screen">
