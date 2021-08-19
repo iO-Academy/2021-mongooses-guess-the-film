@@ -1,5 +1,3 @@
-
-
 function shuffle_array(array) {
     for (let index = array.length - 1; index > 0; index--) {
         let random_index = Math.floor(Math.random() * (index + 1))
@@ -26,6 +24,7 @@ function get_new_question() {
         let correct_incorrect_elem = document.getElementById('correct_incorrect')
         correct_incorrect_elem.style.display = 'none'
         document.getElementById('guess').value = ''
+        document.getElementById('submit_button').disabled = false
     }
     if (hard_mode) {
         document.getElementById('hint_button').style.display = 'none'
@@ -85,8 +84,6 @@ document.getElementById('next_question_button').addEventListener('click', functi
     document.getElementById('hint').style.display = 'none'
     let reveal_button = document.getElementById('reveal_button')
     reveal_button.disabled = false
-    let submit_button = document.getElementById('submit_button')
-    submit_button.disabled = false
     document.getElementById('next_question_button').disabled = true
     document.getElementById('guess').value = ''
     get_new_question()
@@ -130,8 +127,8 @@ document.getElementById('start_button').addEventListener('click', (e) => {
 })
 
 document.getElementById('reveal_button').addEventListener('click', (e) => {
-    document.getElementById('answer').style.display ='block'
-    document.getElementById('hint').style.display ='none'
+    document.getElementById('answer').style.display = 'block'
+    document.getElementById('hint').style.display = 'none'
     document.getElementById('next_question_button').disabled = false
     document.getElementById('hint_button').disabled = true
     document.getElementById('reveal_button').disabled = true
