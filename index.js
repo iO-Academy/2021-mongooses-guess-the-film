@@ -1,4 +1,3 @@
-
 function shuffle_array(array) {
     for (let index = array.length - 1; index > 0; index--) {
         let random_index = Math.floor(Math.random() * (index + 1))
@@ -35,11 +34,11 @@ function get_hint () {
             let answer_title = document.getElementById('answer').dataset.title
             let movie_titles = (data.films).map(movie => movie.title)
             let filtered_movies =  movie_titles.filter(movie => movie !== answer_title)
-            let hint = shuffle_array(filtered_movies).slice(0, 2)
-            hint.push(answer_title)
-            shuffle_array(hint)
-            hint.push(answer_year)
-            document.getElementById('hint').innerHTML = '<p>This Movie was released in: ' + hint[3] + '</p> <ul><li>' + hint[0] + '</li><li>' + hint[1] + '</li><li>' + hint[2] + '</li></ul>'
+            let hints = shuffle_array(filtered_movies).slice(0, 2)
+            hints.push(answer_title)
+            shuffle_array(hints)
+
+            document.getElementById('hint').innerHTML = '<p>This Movie was released in: ' + answer_year + '</p> <ul><li>' + hints[0] + '</li><li>' + hints[1]+ '</li><li>' + hints[2] + '</li></ul>'
             document.getElementById('hint').style.display = 'block'
         })
 }
@@ -106,6 +105,5 @@ document.getElementById('reveal_button').addEventListener('click', (e) => {
 
 document.getElementById('hint_button').addEventListener('click', (e) => {
     document.getElementById('hint_button').disabled = true
-    document.getElementById('hint').style.display = 'block'
     get_hint()
 })
