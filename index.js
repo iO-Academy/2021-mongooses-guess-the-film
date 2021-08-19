@@ -44,6 +44,7 @@ function get_hint () {
 }
 
 let remaining_movies = {}
+let score =0
 document.getElementById('submit_button').addEventListener('click', function () {
     let guess = document.getElementById('guess')
     let player_guess = guess.value
@@ -52,6 +53,7 @@ document.getElementById('submit_button').addEventListener('click', function () {
     let incorrect_response = document.getElementById('incorrect_response')
     let hint_button = document.getElementById('hint_button')
     if(player_guess.toLowerCase() === answer.toLowerCase()) {
+        score ++
         let reveal_button = document.getElementById('reveal_button')
         reveal_button.disabled = true
         correct_response.style.display = 'block'
@@ -60,6 +62,7 @@ document.getElementById('submit_button').addEventListener('click', function () {
         incorrect_response.style.display = 'none'
         guess.value = ''
         document.getElementById('next_question_button').disabled = false
+        document.getElementById('score').textContent = score
     } else {
         correct_response.style.display = 'none'
         incorrect_response.style.display = 'block'
