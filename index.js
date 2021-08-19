@@ -27,23 +27,23 @@ function get_new_question() {
     }
 }
 
-function get_hint ()
-{
+function get_hint () {
     fetch('src/films.json')
         .then(data => data.json())
         .then((data) => {
             let answer_year = document.getElementById('answer').dataset.year
             let answer_title = document.getElementById('answer').dataset.title
-            let movie_titles = (data.films).map(movie => movie.title).filter(movie => movie.title !== answer_title)
-            let hint = shuffle_array(movie_titles).slice(0, 2)
+            let movie_titles = (data.films).map(movie => movie.title)
+            let filtered_movies =  movie_titles.filter(movie => movie !== answer_title)
+            let hint = shuffle_array(filtered_movies).slice(0, 2)
             hint.push(answer_title)
             shuffle_array(hint)
             hint.push(answer_year)
-            console.log(hint)
             document.getElementById('hint').innerHTML = '<p>This Movie was released in: ' + hint[3] + '</p> <ul><li>' + hint[0] + '</li><li>' + hint[1] + '</li><li>' + hint[2] + '</li></ul>'
             document.getElementById('hint').style.display = 'block'
         })
 }
+
 let remaining_movies = {}
 document.getElementById('submit_button').addEventListener('click', function () {
     let guess = document.getElementById('guess')
@@ -70,6 +70,8 @@ document.getElementById('submit_button').addEventListener('click', function () {
 })
 
 document.getElementById('next_question_button').addEventListener('click', function () {
+    document.getElementById('hint_button').disabled = false
+    document.getElementById('hint').style.display = 'none'
     let reveal_button = document.getElementById('reveal_button')
     reveal_button.disabled = false
     reveal_button.style.cursor = 'pointer'
@@ -97,10 +99,12 @@ document.getElementById('reveal_button').addEventListener('click', (e) => {
     document.getElementById('answer').style.display ='block'
     document.getElementById('next_question_button').disabled = false
     let submit_button = document.getElementById('submit_button')
-    submit_button.disabled = true;
+    submit_button.disabled = true
     submit_button.style.cursor = 'default'
 })
 
 document.getElementById('hint_button').addEventListener('click', (e) => {
+    document.getElementById('hint_button').disabled = true
+    document.getElementById('hint').style.display = 'block'
     get_hint()
 })
