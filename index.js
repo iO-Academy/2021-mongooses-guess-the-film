@@ -1,5 +1,3 @@
-document.getElementById('end_screen').style.display = 'none'
-document.getElementById('game_screen').style.display = 'none'
 
 function shuffle_array(array) {
     for (let index = array.length - 1; index > 0; index--) {
@@ -20,11 +18,30 @@ function get_new_question() {
         let quote_element = document.getElementById('quote')
         quote_element.textContent = current_movie.quote
         let answer_element = document.getElementById('answer')
+        answer_element.dataset.year = current_movie.year
+        answer_element.dataset.title = current_movie.title
         answer_element.style.display = 'none'
         answer_element.innerHTML = '<h2>' + current_movie.title + '</h2>'
         let correct_incorrect_elem = document.getElementById('correct_incorrect')
         correct_incorrect_elem.style.display = 'none'
     }
+}
+
+function get_hint () {
+    fetch('src/films.json')
+        .then(data => data.json())
+        .then((data) => {
+            let answer_year = document.getElementById('answer').dataset.year
+            let answer_title = document.getElementById('answer').dataset.title
+            let movie_titles = (data.films).map(movie => movie.title)
+            let filtered_movies =  movie_titles.filter(movie => movie !== answer_title)
+            let hint = shuffle_array(filtered_movies).slice(0, 2)
+            hint.push(answer_title)
+            shuffle_array(hint)
+            hint.push(answer_year)
+            document.getElementById('hint').innerHTML = '<p>This Movie was released in: ' + hint[3] + '</p> <ul><li>' + hint[0] + '</li><li>' + hint[1] + '</li><li>' + hint[2] + '</li></ul>'
+            document.getElementById('hint').style.display = 'block'
+        })
 }
 
 let remaining_movies = {}
@@ -53,6 +70,8 @@ document.getElementById('submit_button').addEventListener('click', function () {
 })
 
 document.getElementById('next_question_button').addEventListener('click', function () {
+    document.getElementById('hint_button').disabled = false
+    document.getElementById('hint').style.display = 'none'
     let reveal_button = document.getElementById('reveal_button')
     reveal_button.disabled = false
     reveal_button.style.cursor = 'pointer'
@@ -79,13 +98,14 @@ document.getElementById('start_button').addEventListener('click', (e) => {
 document.getElementById('reveal_button').addEventListener('click', (e) => {
     document.getElementById('answer').style.display ='block'
     document.getElementById('next_question_button').disabled = false
+    document.getElementById('hint_button').disabled = true
     let submit_button = document.getElementById('submit_button')
-    submit_button.disabled = true;
+    submit_button.disabled = true
     submit_button.style.cursor = 'default'
 })
 
 document.getElementById('hint_button').addEventListener('click', (e) => {
-    let hint_array = get_hint()
-    document.getElementById('hint').innerHTML = '<p>This Movie was released in: ' + hint_array[3] + '</p> <ul><li>' + hint_array[0] + '</li><li>' + hint_array[1] + '</li><li>' + hint_array[2] + '</li></ul>'
+    document.getElementById('hint_button').disabled = true
     document.getElementById('hint').style.display = 'block'
+    get_hint()
 })
