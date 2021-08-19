@@ -97,7 +97,7 @@ document.getElementById('start_button').addEventListener('click', (e) => {
         })
     let timeElem = document.getElementById('time')
     let timeLength = 30
-    timeElem.textContent = 'Time: 30'
+    timeElem.textContent = 'Time: ' + timeLength
     let countDown = setInterval(function() {
         timeLength--
         timeElem.textContent = 'Time: ' + timeLength
