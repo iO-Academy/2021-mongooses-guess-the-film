@@ -37,13 +37,13 @@ function get_hint () {
             let hints = shuffle_array(filtered_movies).slice(0, 2)
             hints.push(answer_title)
             shuffle_array(hints)
-
-            document.getElementById('hint').innerHTML = '<p>This Movie was released in: ' + answer_year + '</p> <ul><li>' + hints[0] + '</li><li>' + hints[1]+ '</li><li>' + hints[2] + '</li></ul>'
+            document.getElementById('hint').innerHTML = '<p>This Movie was released in ' + answer_year + '</p> <ul><li>' + hints[0] + '</li><li>' + hints[1]+ '</li><li>' + hints[2] + '</li></ul>'
             document.getElementById('hint').style.display = 'block'
         })
 }
 
 let remaining_movies = {}
+let score = 0
 document.getElementById('submit_button').addEventListener('click', function () {
     let guess = document.getElementById('guess')
     let player_guess = guess.value
@@ -52,6 +52,7 @@ document.getElementById('submit_button').addEventListener('click', function () {
     let incorrect_response = document.getElementById('incorrect_response')
     let hint_button = document.getElementById('hint_button')
     if(player_guess.toLowerCase() === answer.toLowerCase()) {
+        score ++
         let reveal_button = document.getElementById('reveal_button')
         reveal_button.disabled = true
         correct_response.style.display = 'block'
@@ -60,6 +61,7 @@ document.getElementById('submit_button').addEventListener('click', function () {
         incorrect_response.style.display = 'none'
         guess.value = ''
         document.getElementById('next_question_button').disabled = false
+        document.getElementById('score').textContent = 'Score: ' + score
     } else {
         correct_response.style.display = 'none'
         incorrect_response.style.display = 'block'
@@ -86,12 +88,29 @@ document.getElementById('start_button').addEventListener('click', (e) => {
     document.getElementById('start_screen').style.display = 'none'
     document.getElementById('game_screen').style.display = 'block'
     document.getElementById('next_question_button').disabled = true
+    document.getElementById('score').textContent = 'Score: 0'
     fetch('src/films.json')
         .then(data => data.json())
         .then((data) => {
             remaining_movies = shuffle_array(data.films)
             get_new_question()
         })
+    let timeElem = document.getElementById('time')
+    let timeLength = 30
+    timeElem.textContent = 'Time: ' + timeLength
+    let countDown = setInterval(function() {
+        timeLength--
+        timeElem.textContent = 'Time: ' + timeLength
+        if (timeLength === 0) {
+            clearInterval(countDown)
+            document.getElementById('game_screen').style.display = 'none'
+            document.getElementById('end_screen').style.display = 'block'
+            document.getElementById('end_score').textContent = 'Your score is ' + score
+            document.getElementById('restart_button').addEventListener('click', function () {
+                location.reload()
+            })
+        }
+    }, 1000)
 })
 
 document.getElementById('reveal_button').addEventListener('click', (e) => {
