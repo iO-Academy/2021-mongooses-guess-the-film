@@ -92,6 +92,16 @@ document.getElementById('start_button').addEventListener('click', (e) => {
             remaining_movies = shuffle_array(data.films)
             get_new_question()
         })
+    let timeElem = document.getElementById('time')
+    let timeLength = 30
+    timeElem.textContent = '30' + ' seconds'
+    let countDown = setInterval(function() {
+        timeLength--
+        timeLength !== 1 ? timeElem.textContent = timeLength + 'seconds' : timeElem.textContent = timeLength + 'second'
+        if (timeLength === 0) {
+            clearInterval(countDown)
+        }
+    }, 1000)
 })
 
 document.getElementById('reveal_button').addEventListener('click', (e) => {
