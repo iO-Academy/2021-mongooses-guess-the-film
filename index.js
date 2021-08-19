@@ -25,9 +25,12 @@ function get_new_question() {
         answer_element.innerHTML = '<h2>' + current_movie.title + '</h2>'
         let correct_incorrect_elem = document.getElementById('correct_incorrect')
         correct_incorrect_elem.style.display = 'none'
+        document.getElementById('guess').value = ''
     }
     if (hard_mode) {
         document.getElementById('hint_button').style.display = 'none'
+        document.getElementById('next_question_button').style.display = 'none'
+        document.getElementById('reveal_button').style.display = 'none'
     }
 }
 
