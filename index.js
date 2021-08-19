@@ -1,5 +1,3 @@
-document.getElementById('end_screen').style.display = 'none'
-document.getElementById('game_screen').style.display = 'none'
 
 function shuffle_array(array) {
     for (let index = array.length - 1; index > 0; index--) {
@@ -99,9 +97,7 @@ function get_hint ()
             let hint = shuffle_array(movie_titles).slice(0, 2)
             hint.push(answer_title)
             shuffle_array(hint)
-
-            hint.push(answer_year)
-            console.log(hint)
+            return hint.push(answer_year)
 
         })
 }
