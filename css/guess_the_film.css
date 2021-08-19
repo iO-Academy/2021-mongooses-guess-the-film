@@ -3,17 +3,21 @@
     margin: 0;
     padding: 0;
 }
+
 html {
     color: #fff;
     font-family: neue-haas-unica, sans-serif;
     background-color: #000;
 }
+
 /* --------- start screen -------------- */
+
 main {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
 }
+
 section {
     padding-top: 50px;
     width: 80%;
@@ -21,16 +25,23 @@ section {
     border: 1px solid black;
     border-radius: 50px;
 }
+
 h1, h2 {
     font-family: 'Mexcellent', sans-serif;
     text-transform: uppercase;
 }
+
 h2 {
     font-size: 40px;
     padding: 30px 0;
     letter-spacing: 4px;
     text-align: center;
 }
+
+.quote {
+    margin-bottom: 40px;
+}
+
 .instruction_wrapper p,
 ul li {
     list-style-type: none;
@@ -40,6 +51,7 @@ ul li {
     margin-bottom: 20px;
     line-height: 20px;
 }
+
 h1 {
     font-size: 55px;
     letter-spacing: 5px;
@@ -50,6 +62,7 @@ h1 {
     border-radius: 20px;
     border: 8px solid #fff;
 }
+
 button {
     font-size: 20px;
     font-family: 'Mexcellent', sans-serif;
@@ -63,6 +76,7 @@ button {
     margin: 30px auto 0 auto;
     height: 55px;
 }
+
 button:hover {
     cursor: pointer;
 }
@@ -75,11 +89,18 @@ button:disabled {
 .start_button {
     margin-top: 40px;
 }
+
 /* --------- game screen -------------- */
+
+.score_time {
+    height: 60px;
+}
+
 .game_screen {
     text-align: center;
     display: none;
 }
+
 input {
     width: 500px;
     height: 40px;
@@ -87,44 +108,89 @@ input {
     padding: 27px 25px;
     text-align: center;
 }
+
 .quote {
     font-family: sans-serif;
     color: #fff;
     line-height: 60px;
     font-size: 37px;
 }
+
 .incorrect_response, .correct_response {
     font-size: 25px;
     font-weight: 500;
-    padding-top: 30px;
+    padding: 40px 0;
 }
+
 .hint > ul > li {
     display: inline-block;
-    padding: 0 30px 0 30px;
+    padding: 15px 30px 0 30px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-size: 25px;
+    font-size: 28px;
     font-weight: 600;
 }
+
 .hint > p {
-    margin: 55px 0 35px 0;
-    font-size: 20px;
+    margin: 30px 0 35px 0;
+    font-size: 25px;
     font-weight: 500;
 }
+
 .input_wrapper {
     display: flex;
     justify-content: center;
 }
+
 .submit_button {
     margin: 0;
     margin-left: 30px;
 }
+
 .guess, .submit_button {
-    display: inline-block;
+    display: inline;
 }
+
+.correct_incorrect_wrapper {
+    height: 120px;
+}
+
+.reveal_button, .hint_button, .next_question_button {
+    margin: 0 20px 40px 20px;
+}
+
+.next_question_button {
+    background-color: lawngreen;
+}
+
+.hint_reveal_next_wrapper, .score_time {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+.score, .time {
+    margin: 0 40px;
+    font-size: 25px;
+    font-weight: 600;
+    text-transform: lowercase;
+}
+
+
 /* --------- End screen -------------- */
+
 .end_screen {
     text-align: center;
     display: none;
 }
 
+.end_message {
+    margin: 100px 0 40px 0;
+    font-size: 50px;
+}
+
+.end_score {
+    margin: 20px 0 70px 0;
+    font-size: 30px;
+    font-weight: 500;
+}

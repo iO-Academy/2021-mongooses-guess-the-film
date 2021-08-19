@@ -1,3 +1,5 @@
+
+
 function shuffle_array(array) {
     for (let index = array.length - 1; index > 0; index--) {
         let random_index = Math.floor(Math.random() * (index + 1))
@@ -23,6 +25,9 @@ function get_new_question() {
         answer_element.innerHTML = '<h2>' + current_movie.title + '</h2>'
         let correct_incorrect_elem = document.getElementById('correct_incorrect')
         correct_incorrect_elem.style.display = 'none'
+    }
+    if (hard_mode) {
+        document.getElementById('hint_button').style.display = 'none'
     }
 }
 
@@ -84,7 +89,9 @@ document.getElementById('next_question_button').addEventListener('click', functi
     get_new_question()
 })
 
+let hard_mode = false
 document.getElementById('start_button').addEventListener('click', (e) => {
+    hard_mode = document.getElementById('hard_mode').checked
     document.getElementById('start_screen').style.display = 'none'
     document.getElementById('game_screen').style.display = 'block'
     document.getElementById('next_question_button').disabled = true
@@ -110,11 +117,15 @@ document.getElementById('start_button').addEventListener('click', (e) => {
                 location.reload()
             })
         }
+        if (hard_mode && timeLength % 5 === 0 && timeLength !== 0 && timeLength !== 30) {
+            get_new_question()
+        }
     }, 1000)
 })
 
 document.getElementById('reveal_button').addEventListener('click', (e) => {
     document.getElementById('answer').style.display ='block'
+    document.getElementById('hint').style.display ='none'
     document.getElementById('next_question_button').disabled = false
     document.getElementById('hint_button').disabled = true
     document.getElementById('reveal_button').disabled = true
