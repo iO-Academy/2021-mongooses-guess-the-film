@@ -43,7 +43,7 @@ function get_hint () {
 }
 
 let remaining_movies = {}
-let score =0
+let score = 0
 document.getElementById('submit_button').addEventListener('click', function () {
     let guess = document.getElementById('guess')
     let player_guess = guess.value
@@ -61,7 +61,7 @@ document.getElementById('submit_button').addEventListener('click', function () {
         incorrect_response.style.display = 'none'
         guess.value = ''
         document.getElementById('next_question_button').disabled = false
-        document.getElementById('score').textContent = score
+        document.getElementById('score').textContent = 'Score: ' + score
     } else {
         correct_response.style.display = 'none'
         incorrect_response.style.display = 'block'
@@ -88,6 +88,7 @@ document.getElementById('start_button').addEventListener('click', (e) => {
     document.getElementById('start_screen').style.display = 'none'
     document.getElementById('game_screen').style.display = 'block'
     document.getElementById('next_question_button').disabled = true
+    document.getElementById('score').textContent = 'Score: 0'
     fetch('src/films.json')
         .then(data => data.json())
         .then((data) => {
@@ -96,10 +97,10 @@ document.getElementById('start_button').addEventListener('click', (e) => {
         })
     let timeElem = document.getElementById('time')
     let timeLength = 30
-    timeElem.textContent = '30' + ' seconds'
+    timeElem.textContent = 'Time: 30'
     let countDown = setInterval(function() {
         timeLength--
-        timeLength !== 1 ? timeElem.textContent = timeLength + ' seconds' : timeElem.textContent = timeLength + ' second'
+        timeElem.textContent = 'Time: ' + timeLength
         if (timeLength === 0) {
             clearInterval(countDown)
             document.getElementById('game_screen').style.display = 'none'
