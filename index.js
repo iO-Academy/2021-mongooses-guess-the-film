@@ -1,5 +1,3 @@
-document.getElementById('end_screen').style.display = 'none'
-document.getElementById('game_screen').style.display = 'none'
 
 function shuffle_array(array) {
     for (let index = array.length - 1; index > 0; index--) {
