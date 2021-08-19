@@ -38,7 +38,7 @@ function get_hint () {
             hints.push(answer_title)
             shuffle_array(hints)
 
-            document.getElementById('hint').innerHTML = '<p>This Movie was released in: ' + answer_year + '</p> <ul><li>' + hints[0] + '</li><li>' + hints[1]+ '</li><li>' + hints[2] + '</li></ul>'
+            document.getElementById('hint').innerHTML = '<p>This Movie was released in ' + answer_year + '</p> <ul><li>' + hints[0] + '</li><li>' + hints[1]+ '</li><li>' + hints[2] + '</li></ul>'
             document.getElementById('hint').style.display = 'block'
         })
 }
@@ -103,6 +103,9 @@ document.getElementById('start_button').addEventListener('click', (e) => {
         timeLength !== 1 ? timeElem.textContent = timeLength + ' seconds' : timeElem.textContent = timeLength + ' second'
         if (timeLength === 0) {
             clearInterval(countDown)
+            document.getElementById('game_screen').style.display = 'none'
+            document.getElementById('end_screen').style.display = 'block'
+            document.getElementById('end_score').textContent = 'Your score is ' + score
         }
     }, 1000)
 })
